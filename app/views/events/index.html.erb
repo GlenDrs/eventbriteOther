@@ -5,6 +5,7 @@
 <table class="table table-dark table-hover">
   <thead>
     <tr>
+      <th>User</th>
       <th>Title</th>
       <th>Start date</th>
       <th>Duration</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+      <td><%= event.user.email %></td>
         <td><%= event.title %></td>
         <td><%= event.start_date %></td>
         <td><%= event.duration %></td>

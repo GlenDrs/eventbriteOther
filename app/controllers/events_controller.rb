@@ -13,7 +13,8 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+   # @event = Event.new
+   @event=current_user.event.build
   end
 
   # GET /events/1/edit
@@ -22,7 +23,8 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+  #  @event = Event.new(event_params)
+  @event=current_user.event.build(friend_params)
 
     respond_to do |format|
       if @event.save
@@ -58,8 +60,8 @@ class EventsController < ApplicationController
   end
 
   def correct_user
-  @event=correct_user.events.find_by(id: params[:id])
-  redirect_to events_path, notice "Not autorized modifing the event" if @event.nul?
+  @event=current_user.events.find_by(id: params[:id])
+  redirect_to events_path, notice: "Not autorized modifing the event" if @event.nil?
   end
 
   private
