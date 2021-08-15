@@ -40,6 +40,9 @@
     <%= form.text_field :location %>
   </div>
 
+<%= form.number_field :user_id, id: :event_user_id,
+ class: "mb-3 form-control", value: current_user.id, type: :hidden %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
